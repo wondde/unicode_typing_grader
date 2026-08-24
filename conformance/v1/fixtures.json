@@ -1,0 +1,152 @@
+{
+  "contractVersion": "unicode-typing-grader.v1",
+  "editBacktrackDirection": "end_to_start",
+  "editMatchHandling": "consume_diagonal_before_edits",
+  "editTieBreakOrder": ["substitution", "deletion", "insertion"],
+  "cases": [
+    {
+      "id": "hangul-nfc-equivalence",
+      "reference": "가",
+      "input": "\u1100\u1161",
+      "activeElapsedMicros": 60000000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "exact", "punctuation": "exact"},
+      "expected": {"normalizedReference": "가", "normalizedInput": "가", "referenceGraphemeCount": 1, "inputGraphemeCount": 1, "editDistance": 0, "insertions": 0, "deletions": 0, "substitutions": 0, "accuracyPermille": 1000, "charactersPerMinuteThousandths": 1000}
+    },
+    {
+      "id": "japanese-kana-nfc-equivalence",
+      "reference": "が",
+      "input": "か\u3099",
+      "activeElapsedMicros": 60000000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "exact", "punctuation": "exact"},
+      "expected": {"normalizedReference": "が", "normalizedInput": "が", "referenceGraphemeCount": 1, "inputGraphemeCount": 1, "editDistance": 0, "insertions": 0, "deletions": 0, "substitutions": 0, "accuracyPermille": 1000, "charactersPerMinuteThousandths": 1000}
+    },
+    {
+      "id": "hangul-substitution",
+      "reference": "안녕하세요",
+      "input": "안녕하새요",
+      "activeElapsedMicros": 30000000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "exact", "punctuation": "exact"},
+      "expected": {"normalizedReference": "안녕하세요", "normalizedInput": "안녕하새요", "referenceGraphemeCount": 5, "inputGraphemeCount": 5, "editDistance": 1, "insertions": 0, "deletions": 0, "substitutions": 1, "accuracyPermille": 800, "charactersPerMinuteThousandths": 10000}
+    },
+    {
+      "id": "hangul-insertion",
+      "reference": "가나",
+      "input": "가나다",
+      "activeElapsedMicros": 30000000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "exact", "punctuation": "exact"},
+      "expected": {"normalizedReference": "가나", "normalizedInput": "가나다", "referenceGraphemeCount": 2, "inputGraphemeCount": 3, "editDistance": 1, "insertions": 1, "deletions": 0, "substitutions": 0, "accuracyPermille": 666, "charactersPerMinuteThousandths": 6000}
+    },
+    {
+      "id": "hangul-deletion",
+      "reference": "가나다",
+      "input": "가나",
+      "activeElapsedMicros": 30000000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "exact", "punctuation": "exact"},
+      "expected": {"normalizedReference": "가나다", "normalizedInput": "가나", "referenceGraphemeCount": 3, "inputGraphemeCount": 2, "editDistance": 1, "insertions": 0, "deletions": 1, "substitutions": 0, "accuracyPermille": 666, "charactersPerMinuteThousandths": 4000}
+    },
+    {
+      "id": "emoji-extended-grapheme",
+      "reference": "👩🏽‍💻",
+      "input": "👩🏽‍💻",
+      "activeElapsedMicros": 1500000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "exact", "punctuation": "exact"},
+      "expected": {"normalizedReference": "👩🏽‍💻", "normalizedInput": "👩🏽‍💻", "referenceGraphemeCount": 1, "inputGraphemeCount": 1, "editDistance": 0, "insertions": 0, "deletions": 0, "substitutions": 0, "accuracyPermille": 1000, "charactersPerMinuteThousandths": 40000}
+    },
+    {
+      "id": "latin-combining-mark-nfc",
+      "reference": "é",
+      "input": "e\u0301",
+      "activeElapsedMicros": 60000000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "exact", "punctuation": "exact"},
+      "expected": {"normalizedReference": "é", "normalizedInput": "é", "referenceGraphemeCount": 1, "inputGraphemeCount": 1, "editDistance": 0, "insertions": 0, "deletions": 0, "substitutions": 0, "accuracyPermille": 1000, "charactersPerMinuteThousandths": 1000}
+    },
+    {
+      "id": "exact-whitespace",
+      "reference": "안녕 친구",
+      "input": "안녕  친구",
+      "activeElapsedMicros": 60000000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "exact", "punctuation": "exact"},
+      "expected": {"normalizedReference": "안녕 친구", "normalizedInput": "안녕  친구", "referenceGraphemeCount": 5, "inputGraphemeCount": 6, "editDistance": 1, "insertions": 1, "deletions": 0, "substitutions": 0, "accuracyPermille": 833, "charactersPerMinuteThousandths": 6000}
+    },
+    {
+      "id": "trim-unicode-whitespace",
+      "reference": "안녕",
+      "input": "\u3000안녕\u00a0",
+      "activeElapsedMicros": 30000000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "trim", "punctuation": "exact"},
+      "expected": {"normalizedReference": "안녕", "normalizedInput": "안녕", "referenceGraphemeCount": 2, "inputGraphemeCount": 2, "editDistance": 0, "insertions": 0, "deletions": 0, "substitutions": 0, "accuracyPermille": 1000, "charactersPerMinuteThousandths": 4000}
+    },
+    {
+      "id": "collapse-unicode-whitespace",
+      "reference": "안녕 친구",
+      "input": "  안녕\t\u3000친구  ",
+      "activeElapsedMicros": 30000000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "collapse", "punctuation": "exact"},
+      "expected": {"normalizedReference": "안녕 친구", "normalizedInput": "안녕 친구", "referenceGraphemeCount": 5, "inputGraphemeCount": 5, "editDistance": 0, "insertions": 0, "deletions": 0, "substitutions": 0, "accuracyPermille": 1000, "charactersPerMinuteThousandths": 10000}
+    },
+    {
+      "id": "ignore-terminal-punctuation",
+      "reference": "안녕하세요.",
+      "input": "안녕하세요！",
+      "activeElapsedMicros": 30000000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "exact", "punctuation": "ignore_terminal"},
+      "expected": {"normalizedReference": "안녕하세요", "normalizedInput": "안녕하세요", "referenceGraphemeCount": 5, "inputGraphemeCount": 5, "editDistance": 0, "insertions": 0, "deletions": 0, "substitutions": 0, "accuracyPermille": 1000, "charactersPerMinuteThousandths": 10000}
+    },
+    {
+      "id": "exact-terminal-punctuation",
+      "reference": "안녕하세요.",
+      "input": "안녕하세요！",
+      "activeElapsedMicros": 30000000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "exact", "punctuation": "exact"},
+      "expected": {"normalizedReference": "안녕하세요.", "normalizedInput": "안녕하세요！", "referenceGraphemeCount": 6, "inputGraphemeCount": 6, "editDistance": 1, "insertions": 0, "deletions": 0, "substitutions": 1, "accuracyPermille": 833, "charactersPerMinuteThousandths": 12000}
+    },
+    {
+      "id": "one-terminal-grapheme-only",
+      "reference": "정말?!",
+      "input": "정말",
+      "activeElapsedMicros": 60000000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "exact", "punctuation": "ignore_terminal"},
+      "expected": {"normalizedReference": "정말?", "normalizedInput": "정말", "referenceGraphemeCount": 3, "inputGraphemeCount": 2, "editDistance": 1, "insertions": 0, "deletions": 1, "substitutions": 0, "accuracyPermille": 666, "charactersPerMinuteThousandths": 2000}
+    },
+    {
+      "id": "combining-korean-tone-mark",
+      "reference": "각",
+      "input": "가\u302e",
+      "activeElapsedMicros": 60000000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "exact", "punctuation": "exact"},
+      "expected": {"normalizedReference": "각", "normalizedInput": "가\u302e", "referenceGraphemeCount": 1, "inputGraphemeCount": 1, "editDistance": 1, "insertions": 0, "deletions": 0, "substitutions": 1, "accuracyPermille": 0, "charactersPerMinuteThousandths": 1000}
+    },
+    {
+      "id": "ambiguous-edit-tie-break",
+      "reference": "ab",
+      "input": "ba",
+      "activeElapsedMicros": 60000000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "exact", "punctuation": "exact"},
+      "expected": {"normalizedReference": "ab", "normalizedInput": "ba", "referenceGraphemeCount": 2, "inputGraphemeCount": 2, "editDistance": 2, "insertions": 0, "deletions": 0, "substitutions": 2, "accuracyPermille": 0, "charactersPerMinuteThousandths": 2000}
+    },
+    {
+      "id": "ambiguous-backtrack-direction",
+      "reference": "abab",
+      "input": "baaba",
+      "activeElapsedMicros": 60000000,
+      "policy": {"version": "unicode-typing-grader.v1", "normalization": "nfc", "whitespace": "exact", "punctuation": "exact"},
+      "expected": {
+        "normalizedReference": "abab",
+        "normalizedInput": "baaba",
+        "referenceGraphemeCount": 4,
+        "inputGraphemeCount": 5,
+        "editDistance": 3,
+        "insertions": 2,
+        "deletions": 1,
+        "substitutions": 0,
+        "accuracyPermille": 400,
+        "charactersPerMinuteThousandths": 5000,
+        "edits": [
+          {"kind": "insertion", "referenceIndex": 0, "inputIndex": 0, "inputGrapheme": "b"},
+          {"kind": "insertion", "referenceIndex": 0, "inputIndex": 1, "inputGrapheme": "a"},
+          {"kind": "deletion", "referenceIndex": 3, "inputIndex": 5, "referenceGrapheme": "b"}
+        ]
+      }
+    }
+  ]
+}
