@@ -11,6 +11,26 @@ Japanese kana, Latin combining marks, and emoji joined with zero-width joiners.
 
 Originally extracted from **Hangurinyang**, a Korean-learning product by Moroo.
 
+![A Korean language-learning typing prompt being graded for accuracy, speed, and one grapheme-level substitution](doc/assets/typing-grader-demo.gif)
+
+## When would I use this?
+
+Use this package when your product shows someone a reference and needs to
+evaluate what they typed. For example:
+
+- a language-learning app that explains exactly which character differed;
+- a transcription exercise that measures accuracy and active typing speed;
+- a typing assessment that must treat Hangul, kana, combining marks, and emoji
+  as people see them rather than as UTF-16 code units.
+
+It is a grading engine, not a spell checker or autocomplete service. Your app
+owns the prompt, text field, timer lifecycle, and feedback UI; this package
+turns the final reference, input, policy, and active duration into reproducible
+results.
+
+The animation above comes from the [browser example](example/web), which calls
+the same `gradeTyping` API documented below.
+
 ## Features
 
 - NFC normalization before comparison

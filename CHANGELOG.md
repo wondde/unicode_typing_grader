@@ -5,3 +5,4 @@
 - Add integer-backed accuracy and gross CPM metrics.
 - Add a monotonic active-typing timer.
 - Add Korean, Japanese, Latin, and emoji conformance cases.
+- Add an interactive browser example and README demonstration.
