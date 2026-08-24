@@ -1,6 +1,8 @@
 # unicode_typing_grader
 
-English | [한국어](README.ko.md) | [日本語](README.ja.md)
+English | [한국어](https://github.com/wondde/unicode_typing_grader/blob/main/README.ko.md) | [日本語](https://github.com/wondde/unicode_typing_grader/blob/main/README.ja.md)
+
+[![CI](https://github.com/wondde/unicode_typing_grader/actions/workflows/ci.yml/badge.svg)](https://github.com/wondde/unicode_typing_grader/actions/workflows/ci.yml)
 
 Unicode-aware typing assessment for Dart. Compare what a learner typed with a
 reference by user-perceived characters, then calculate deterministic edits,
@@ -26,8 +28,9 @@ owns the prompt, text field, timer lifecycle, and feedback UI; this package
 turns the final reference, input, policy, and active duration into reproducible
 results.
 
-The animation above comes from the [browser example](example/web), which calls
-the same `gradeTyping` API documented below.
+The animation above comes from the
+[browser example](https://github.com/wondde/unicode_typing_grader/tree/main/example/web),
+which calls the same `gradeTyping` API documented below.
 
 ## Features
 
@@ -43,18 +46,12 @@ the same `gradeTyping` API documented below.
 
 ## Installation
 
-The first development release has not been published to pub.dev yet. Depend on
-the Git repository while the public API is being validated:
+Add the package from pub.dev:
 
 ```yaml
 dependencies:
-  unicode_typing_grader:
-    git:
-      url: https://github.com/wondde/unicode_typing_grader.git
-      ref: main
+  unicode_typing_grader: ^0.1.0
 ```
-
-Pin a release tag or commit in production instead of tracking `main`.
 
 ## Usage
 
@@ -111,15 +108,22 @@ accuracy = max(0, max(reference, input) - editDistance)
 ```
 
 `accuracyPermille` stores this ratio as an integer from `0` to `1000`.
-`charactersPerMinuteThousandths` stores gross input CPM multiplied by `1000`.
-The scaled integers make persisted and cross-language results reproducible.
+`charactersPerMinuteThousandths` stores gross CPM multiplied by `1000`. CPM
+counts input graphemes after policy preparation and does not subtract errors;
+record raw keystrokes separately if your product needs them. The scaled
+integers make persisted and cross-language results reproducible.
+
+Policy preparation always runs in this order: NFC normalization, whitespace,
+then terminal punctuation. A zero active duration produces zero CPM; a negative
+duration is rejected.
 
 ## Conformance contract
 
-[`conformance/v1/fixtures.json`](conformance/v1/fixtures.json) defines observable
-v1 behavior, including ambiguous edit-path tie breaking. Independent
-implementations can run the same cases to verify that they agree with the Dart
-package. See [the conformance guide](conformance/README.md).
+[`conformance/v1/fixtures.json`](https://github.com/wondde/unicode_typing_grader/blob/main/conformance/v1/fixtures.json)
+defines observable v1 behavior, including ambiguous edit-path tie breaking.
+Independent implementations can run the same cases to verify that they agree
+with the Dart package. See
+[the conformance guide](https://github.com/wondde/unicode_typing_grader/blob/main/conformance/README.md).
 
 The initial contract is tested with `characters` 1.4.1, based on Unicode 16.0
 grapheme segmentation, and `unorm_dart` 0.3.2, based on Unicode 17.0
@@ -134,10 +138,12 @@ limit untrusted input before using it to grade long documents.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Bug reports and additional Unicode edge
-cases are welcome, especially examples from scripts not yet represented in the
-conformance suite.
+See
+[CONTRIBUTING.md](https://github.com/wondde/unicode_typing_grader/blob/main/CONTRIBUTING.md).
+Bug reports and additional Unicode edge cases are welcome, especially examples
+from scripts not yet represented in the conformance suite.
 
 ## License
 
-BSD 3-Clause. See [LICENSE](LICENSE).
+BSD 3-Clause. See
+[LICENSE](https://github.com/wondde/unicode_typing_grader/blob/main/LICENSE).

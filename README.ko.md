@@ -1,6 +1,8 @@
 # unicode_typing_grader
 
-[English](README.md) | 한국어 | [日本語](README.ja.md)
+[English](https://github.com/wondde/unicode_typing_grader/blob/main/README.md) | 한국어 | [日本語](https://github.com/wondde/unicode_typing_grader/blob/main/README.ja.md)
+
+[![CI](https://github.com/wondde/unicode_typing_grader/actions/workflows/ci.yml/badge.svg)](https://github.com/wondde/unicode_typing_grader/actions/workflows/ci.yml)
 
 Dart를 위한 Unicode 기반 타이핑 채점기입니다. 기준 문장과 사용자가 입력한
 문장을 눈에 보이는 글자 단위로 비교하고, 결정적인 편집 내역과 정확도, 분당
@@ -26,7 +28,8 @@ Dart를 위한 Unicode 기반 타이핑 채점기입니다. 기준 문장과 사
 정책, 활성 입력 시간을 받아 어디서 실행해도 재현할 수 있는 채점 결과를 만듭니다.
 
 위 애니메이션은 실제 `gradeTyping` API를 호출하는
-[브라우저 예제](example/web)에서 만들었습니다.
+[브라우저 예제](https://github.com/wondde/unicode_typing_grader/tree/main/example/web)에서
+만들었습니다.
 
 ## 주요 기능
 
@@ -42,18 +45,12 @@ Dart를 위한 Unicode 기반 타이핑 채점기입니다. 기준 문장과 사
 
 ## 설치
 
-첫 개발 버전은 아직 pub.dev에 게시하지 않았습니다. 공개 API를 검증하는 동안
-Git 저장소를 의존성으로 사용합니다.
+pub.dev에서 패키지를 추가합니다.
 
 ```yaml
 dependencies:
-  unicode_typing_grader:
-    git:
-      url: https://github.com/wondde/unicode_typing_grader.git
-      ref: main
+  unicode_typing_grader: ^0.1.0
 ```
-
-프로덕션에서는 `main` 대신 릴리스 태그나 커밋을 고정하는 것을 권장합니다.
 
 ## 사용법
 
@@ -110,16 +107,23 @@ accuracy = max(0, max(reference, input) - editDistance)
 ```
 
 `accuracyPermille`은 정확도 비율을 `0`부터 `1000`까지의 정수로 저장합니다.
-`charactersPerMinuteThousandths`는 입력 CPM에 `1000`을 곱한 정수입니다. 정수
-표현을 사용하므로 저장소와 서로 다른 프로그래밍 언어에서 같은 결과를
-재현하기 쉽습니다.
+`charactersPerMinuteThousandths`는 CPM에 `1000`을 곱한 정수입니다. CPM은 비교
+정책을 적용하고 남은 입력 grapheme 수를 사용하며, 오타가 있어도 글자 수를
+차감하지 않습니다. 실제 키 입력 횟수가 필요하면 애플리케이션에서 별도로
+기록해야 합니다. 정수 표현을 사용하므로 저장소와 서로 다른 프로그래밍 언어에서
+같은 결과를 재현하기 쉽습니다.
+
+비교 정책은 NFC 정규화, 공백, 문장 끝 문장부호 순서로 적용됩니다. 활성 입력
+시간이 0이면 CPM도 0이며, 음수 시간은 잘못된 입력으로 거부합니다.
 
 ## 검증 계약
 
-[`conformance/v1/fixtures.json`](conformance/v1/fixtures.json)은 애매한 편집 경로의
-우선순위를 포함한 v1 동작을 정의합니다. 다른 언어로 구현한 채점기도 이
-fixture를 실행하여 Dart 패키지와 결과가 같은지 확인할 수 있습니다. 자세한
-내용은 [검증 가이드](conformance/README.md)를 참고하세요.
+[`conformance/v1/fixtures.json`](https://github.com/wondde/unicode_typing_grader/blob/main/conformance/v1/fixtures.json)은
+애매한 편집 경로의 우선순위를 포함한 v1 동작을 정의합니다. 다른 언어로 구현한
+채점기도 이 fixture를 실행하여 Dart 패키지와 결과가 같은지 확인할 수 있습니다.
+자세한 내용은
+[검증 가이드](https://github.com/wondde/unicode_typing_grader/blob/main/conformance/README.md)를
+참고하세요.
 
 첫 계약은 Unicode 16.0 grapheme 분할에 기반한 `characters` 1.4.1과 Unicode
 17.0 정규화 데이터에 기반한 `unorm_dart` 0.3.2로 검증했습니다. 의존성
@@ -134,7 +138,10 @@ fixture를 실행하여 Dart 패키지와 결과가 같은지 확인할 수 있�
 
 ## 기여 및 라이선스
 
-기여 방법은 [CONTRIBUTING.md](CONTRIBUTING.md)를 참고하세요. 아직 검증 사례에
-없는 문자 체계의 Unicode 예제를 특히 환영합니다.
+기여 방법은
+[CONTRIBUTING.md](https://github.com/wondde/unicode_typing_grader/blob/main/CONTRIBUTING.md)를
+참고하세요. 아직 검증 사례에 없는 문자 체계의 Unicode 예제를 특히 환영합니다.
 
-이 프로젝트는 [BSD 3-Clause 라이선스](LICENSE)로 배포됩니다.
+이 프로젝트는
+[BSD 3-Clause 라이선스](https://github.com/wondde/unicode_typing_grader/blob/main/LICENSE)로
+배포됩니다.

@@ -17,9 +17,13 @@ Each case contains:
 | `expected.insertions`, `deletions`, `substitutions` | Components of the deterministic edit path |
 | `expected.edits` | Grapheme indices and boundaries for path-sensitive cases |
 | `expected.accuracyPermille` | Accuracy ratio multiplied by 1000 |
-| `expected.charactersPerMinuteThousandths` | Gross CPM multiplied by 1000 |
+| `expected.charactersPerMinuteThousandths` | Gross prepared-input CPM multiplied by 1000 |
 
 The top-level `editBacktrackDirection`, `editMatchHandling`, and
 `editTieBreakOrder` fields are also part of the contract. Add edge cases with a
 stable, descriptive `id`. Do not change an existing expected result unless the
 contract version changes.
+
+CPM counts the input graphemes left after policy preparation and does not
+subtract errors. Applications that need raw keystrokes or pre-policy text
+length should record that measurement separately.
