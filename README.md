@@ -9,8 +9,6 @@ accuracy, and gross characters per minute (CPM).
 The engine is language-neutral. Its conformance suite includes Korean Hangul,
 Japanese kana, Latin combining marks, and emoji joined with zero-width joiners.
 
-Originally extracted from **Hangurinyang**, a Korean-learning product by Moroo.
-
 ![An English language-learning typing prompt being graded for accuracy, speed, and one grapheme-level deletion](doc/assets/typing-grader-demo-en.gif)
 
 ## When would I use this?
