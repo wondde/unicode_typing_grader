@@ -12,7 +12,7 @@ Dart向けのUnicode対応タイピング評価ライブラリです。お手本
 ハングル、日本語の仮名、ラテン文字の結合文字、ゼロ幅接合子を含む絵文字が
 含まれています。
 
-![日本語の学習文を入力し、正確度、速度、書記素単位の削除を評価する例](doc/assets/typing-grader-demo-ja.gif)
+![日本語の学習文を入力し、正確度、速度、書記素単位の削除を評価する例](https://raw.githubusercontent.com/wondde/unicode_typing_grader/main/doc/assets/typing-grader-demo-ja.gif)
 
 ## どのような場面で使えますか？
 
@@ -51,7 +51,7 @@ pub.devからパッケージを追加します。
 
 ```yaml
 dependencies:
-  unicode_typing_grader: ^0.1.0
+  unicode_typing_grader: ^0.1.1
 ```
 
 ## 使い方

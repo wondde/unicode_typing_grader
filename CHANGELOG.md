@@ -1,3 +1,8 @@
+## 0.1.1
+
+- Render README demo animations on pub.dev with absolute image URLs.
+- Exclude repository-hosted README media from the package archive.
+
 ## 0.1.0
 
 - Add NFC-normalized, grapheme-level typing comparison.

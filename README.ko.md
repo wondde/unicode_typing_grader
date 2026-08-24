@@ -11,7 +11,7 @@ Dart를 위한 Unicode 기반 타이핑 채점기입니다. 기준 문장과 사
 엔진은 특정 언어에 종속되지 않습니다. 공식 검증 사례에는 한글, 일본어 가나,
 라틴 결합 문자, 제로 폭 결합자로 이어진 이모지가 포함되어 있습니다.
 
-![한국어 학습 문장을 입력한 뒤 정확도, 속도, grapheme 단위 오타 하나를 채점하는 예제](doc/assets/typing-grader-demo-ko.gif)
+![한국어 학습 문장을 입력한 뒤 정확도, 속도, grapheme 단위 오타 하나를 채점하는 예제](https://raw.githubusercontent.com/wondde/unicode_typing_grader/main/doc/assets/typing-grader-demo-ko.gif)
 
 ## 언제 사용할 수 있나요?
 
@@ -49,7 +49,7 @@ pub.dev에서 패키지를 추가합니다.
 
 ```yaml
 dependencies:
-  unicode_typing_grader: ^0.1.0
+  unicode_typing_grader: ^0.1.1
 ```
 
 ## 사용법

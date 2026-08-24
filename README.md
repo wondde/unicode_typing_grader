@@ -11,7 +11,7 @@ accuracy, and gross characters per minute (CPM).
 The engine is language-neutral. Its conformance suite includes Korean Hangul,
 Japanese kana, Latin combining marks, and emoji joined with zero-width joiners.
 
-![An English language-learning typing prompt being graded for accuracy, speed, and one grapheme-level deletion](doc/assets/typing-grader-demo-en.gif)
+![An English language-learning typing prompt being graded for accuracy, speed, and one grapheme-level deletion](https://raw.githubusercontent.com/wondde/unicode_typing_grader/main/doc/assets/typing-grader-demo-en.gif)
 
 ## When would I use this?
 
@@ -50,7 +50,7 @@ Add the package from pub.dev:
 
 ```yaml
 dependencies:
-  unicode_typing_grader: ^0.1.0
+  unicode_typing_grader: ^0.1.1
 ```
 
 ## Usage
