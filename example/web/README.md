@@ -12,4 +12,5 @@ python3 -m http.server 8080 --directory example/web
 ```
 
 Then open <http://localhost:8080>. Add `?autoplay=1` to replay the short
-interaction used for the README demo.
+interaction used for the README demo. Select the sample deterministically with
+`sample=en`, `sample=ko`, or `sample=ja`.

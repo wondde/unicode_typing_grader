@@ -14,6 +14,8 @@ final _elapsedTime =
     web.document.querySelector('#elapsed-time')! as web.HTMLElement;
 final _gradeButton =
     web.document.querySelector('#grade-button')! as web.HTMLButtonElement;
+final _englishButton =
+    web.document.querySelector('#english-sample')! as web.HTMLButtonElement;
 final _koreanButton =
     web.document.querySelector('#korean-sample')! as web.HTMLButtonElement;
 final _japaneseButton =
@@ -41,10 +43,14 @@ const _policy = TypingGradingPolicy(
   punctuation: TypingPunctuationPolicy.ignoreTerminal,
 );
 
-var _activeSample = _Sample.korean;
+var _activeSample = _Sample.english;
 
 void main() {
   _gradeButton.addEventListener('click', ((web.Event _) => _grade()).toJS);
+  _englishButton.addEventListener(
+    'click',
+    ((web.Event _) => _selectSample(_Sample.english)).toJS,
+  );
   _koreanButton.addEventListener(
     'click',
     ((web.Event _) => _selectSample(_Sample.korean)).toJS,
@@ -54,7 +60,15 @@ void main() {
     ((web.Event _) => _selectSample(_Sample.japanese)).toJS,
   );
 
-  if (web.window.location.search.contains('autoplay=1')) {
+  final search = web.window.location.search;
+  final requestedSample = search.contains('sample=ko')
+      ? _Sample.korean
+      : search.contains('sample=ja')
+      ? _Sample.japanese
+      : _Sample.english;
+  _selectSample(requestedSample, focus: false);
+
+  if (search.contains('autoplay=1')) {
     unawaited(_runAutomaticDemo());
   }
 }
@@ -103,13 +117,16 @@ String _describeFirstEdit(TypingComparison comparison) {
   };
 }
 
-void _selectSample(_Sample sample) {
+void _selectSample(_Sample sample, {bool focus = true}) {
   _activeSample = sample;
   _scenarioTitle.textContent = sample.title;
   _referenceText.textContent = sample.reference;
   _elapsedTime.textContent = '${sample.elapsed.inSeconds}s';
   _typingInput.value = '';
   _typingInput.placeholder = sample.placeholder;
+  _englishButton.className = sample == _Sample.english
+      ? 'sample-button is-active'
+      : 'sample-button';
   _koreanButton.className = sample == _Sample.korean
       ? 'sample-button is-active'
       : 'sample-button';
@@ -118,7 +135,9 @@ void _selectSample(_Sample sample) {
       : 'sample-button';
   _emptyState.hidden = false.toJS;
   _gradedState.hidden = true.toJS;
-  _typingInput.focus();
+  if (focus) {
+    _typingInput.focus();
+  }
 }
 
 Future<void> _runAutomaticDemo() async {
@@ -133,6 +152,13 @@ Future<void> _runAutomaticDemo() async {
 }
 
 enum _Sample {
+  english(
+    title: 'A learner practices English',
+    reference: 'Practice makes progress.',
+    attempt: 'Practice makes progres.',
+    placeholder: 'Type the English sentence…',
+    elapsed: Duration(seconds: 22),
+  ),
   korean(
     title: 'A learner practices Korean',
     reference: '오늘은 날씨가 좋아요.',
