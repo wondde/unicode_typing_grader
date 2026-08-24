@@ -20,25 +20,39 @@ final class TypingMetrics {
   /// Accuracy as a ratio scaled to 0..1000 for integer persistence.
   final int accuracyPermille;
 
-  /// Gross CPM multiplied by 1000 for integer persistence.
+  /// Gross prepared-input CPM multiplied by 1000 for integer persistence.
   final int charactersPerMinuteThousandths;
 
   /// Accuracy represented as a percentage from 0 to 100.
   double get accuracyPercent => accuracyPermille / 10;
 
-  /// Gross input characters per active minute.
+  /// Gross prepared-input graphemes per active minute.
+  ///
+  /// Policy preparation can trim or collapse whitespace and remove supported
+  /// terminal punctuation before this value is calculated. Errors do not
+  /// reduce the grapheme count.
   double get charactersPerMinute => charactersPerMinuteThousandths / 1000;
 }
 
 /// Calculates accuracy and gross CPM from a prepared grapheme comparison.
+///
+/// Zero active time produces zero CPM. Throws [ArgumentError] when
+/// [activeElapsed] is negative or the prepared reference is empty.
 TypingMetrics calculateTypingMetrics({
   required TypingComparison comparison,
   required Duration activeElapsed,
 }) {
+  if (activeElapsed.isNegative) {
+    throw ArgumentError.value(
+      activeElapsed,
+      'activeElapsed',
+      'The active duration must not be negative.',
+    );
+  }
   if (comparison.referenceCount == 0) {
     throw ArgumentError.value(
       comparison.normalizedReference,
-      'comparison',
+      'comparison.normalizedReference',
       'The normalized reference must not be empty.',
     );
   }
@@ -53,7 +67,7 @@ TypingMetrics calculateTypingMetrics({
             1000 ~/
             accuracyDenominator;
   final elapsedMicros = activeElapsed.inMicroseconds;
-  final charactersPerMinuteThousandths = elapsedMicros <= 0
+  final charactersPerMinuteThousandths = elapsedMicros == 0
       ? 0
       : comparison.inputCount *
             Duration.microsecondsPerMinute *

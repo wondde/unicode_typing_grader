@@ -97,7 +97,7 @@ void _grade() {
   _receivedValue.textContent = comparison.normalizedInput;
   _resultSummary.textContent = comparison.editDistance == 0
       ? 'Perfect match'
-      : '${comparison.editDistance} detail to review';
+      : '${comparison.editDistance} ${comparison.editDistance == 1 ? 'detail' : 'details'} to review';
 
   _emptyState.hidden = true.toJS;
   _gradedState.hidden = false.toJS;

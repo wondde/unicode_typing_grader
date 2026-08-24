@@ -1,6 +1,8 @@
 # unicode_typing_grader
 
-[English](README.md) | [한국어](README.ko.md) | 日本語
+[English](https://github.com/wondde/unicode_typing_grader/blob/main/README.md) | [한국어](https://github.com/wondde/unicode_typing_grader/blob/main/README.ko.md) | 日本語
+
+[![CI](https://github.com/wondde/unicode_typing_grader/actions/workflows/ci.yml/badge.svg)](https://github.com/wondde/unicode_typing_grader/actions/workflows/ci.yml)
 
 Dart向けのUnicode対応タイピング評価ライブラリです。お手本と入力された文章を
 ユーザーが認識する文字単位で比較し、決定的な編集内容、正確度、1分あたりの
@@ -28,7 +30,8 @@ Dart向けのUnicode対応タイピング評価ライブラリです。お手本
 実行環境をまたいで再現できる評価結果を生成します。
 
 上のアニメーションは、実際の`gradeTyping` APIを呼び出す
-[ブラウザのサンプル](example/web)から作成しています。
+[ブラウザのサンプル](https://github.com/wondde/unicode_typing_grader/tree/main/example/web)から
+作成しています。
 
 ## 主な機能
 
@@ -44,18 +47,12 @@ Dart向けのUnicode対応タイピング評価ライブラリです。お手本
 
 ## インストール
 
-最初の開発版はまだpub.devに公開されていません。公開APIを検証している間は、
-Gitリポジトリを依存関係として指定してください。
+pub.devからパッケージを追加します。
 
 ```yaml
 dependencies:
-  unicode_typing_grader:
-    git:
-      url: https://github.com/wondde/unicode_typing_grader.git
-      ref: main
+  unicode_typing_grader: ^0.1.0
 ```
-
-本番環境では`main`ではなく、リリースタグまたはコミットを固定してください。
 
 ## 使い方
 
@@ -115,16 +112,22 @@ accuracy = max(0, max(reference, input) - editDistance)
 ```
 
 `accuracyPermille`は正確度を`0`から`1000`までの整数で保持します。
-`charactersPerMinuteThousandths`は入力CPMを`1000`倍した整数です。整数表現に
+`charactersPerMinuteThousandths`はCPMを`1000`倍した整数です。CPMはポリシー
+適用後の入力書記素数を使い、誤りがあっても文字数を減らしません。実際のキー
+入力回数が必要な場合は、アプリケーション側で別途記録してください。整数表現に
 よって、永続化した値や異なるプログラミング言語の間でも同じ結果を再現しやすく
 なります。
 
+ポリシーはNFC正規化、空白、文末記号の順に適用されます。アクティブ入力時間が
+0の場合、CPMも0になります。負の時間は不正な入力として拒否されます。
+
 ## 適合性コントラクト
 
-[`conformance/v1/fixtures.json`](conformance/v1/fixtures.json)は、曖昧な編集経路の
-優先順位を含むv1の動作を定義します。他の言語による実装も同じfixtureを実行し、
-Dartパッケージと一致することを確認できます。詳細は
-[適合性ガイド](conformance/README.md)を参照してください。
+[`conformance/v1/fixtures.json`](https://github.com/wondde/unicode_typing_grader/blob/main/conformance/v1/fixtures.json)は、
+曖昧な編集経路の優先順位を含むv1の動作を定義します。他の言語による実装も同じ
+fixtureを実行し、Dartパッケージと一致することを確認できます。詳細は
+[適合性ガイド](https://github.com/wondde/unicode_typing_grader/blob/main/conformance/README.md)を
+参照してください。
 
 最初のコントラクトは、Unicode 16.0の書記素分割に基づく`characters` 1.4.1と、
 Unicode 17.0の正規化データに基づく`unorm_dart` 0.3.2で検証しています。依存関係
@@ -139,7 +142,11 @@ Unicode 17.0の正規化データに基づく`unorm_dart` 0.3.2で検証して�
 
 ## コントリビューションとライセンス
 
-コントリビューション方法は[CONTRIBUTING.md](CONTRIBUTING.md)を参照してください。
-まだ適合性テストに含まれていない文字体系のUnicode事例を特に歓迎します。
+コントリビューション方法は
+[CONTRIBUTING.md](https://github.com/wondde/unicode_typing_grader/blob/main/CONTRIBUTING.md)を
+参照してください。まだ適合性テストに含まれていない文字体系のUnicode事例を
+特に歓迎します。
 
-このプロジェクトは[BSD 3-Clauseライセンス](LICENSE)で提供されます。
+このプロジェクトは
+[BSD 3-Clauseライセンス](https://github.com/wondde/unicode_typing_grader/blob/main/LICENSE)で
+提供されます。

@@ -90,7 +90,7 @@ final class TypingGradingPolicy {
     },
   };
 
-  /// Applies v1 normalization in a deterministic order.
+  /// Applies NFC, then whitespace, then punctuation preparation.
   String prepareForComparison(String text) {
     var prepared = unicode.nfc(text);
     prepared = switch (whitespace) {

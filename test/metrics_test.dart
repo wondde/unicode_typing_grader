@@ -40,6 +40,16 @@ void main() {
       expect(metrics.charactersPerMinuteThousandths, 0);
     });
 
+    test('rejects a negative active duration', () {
+      expect(
+        () => calculateTypingMetrics(
+          comparison: compareNormalizedGraphemes(reference: '가', input: '가'),
+          activeElapsed: const Duration(microseconds: -1),
+        ),
+        throwsArgumentError,
+      );
+    });
+
     test('keeps short-session precision in fixed-point CPM', () {
       final metrics = calculateTypingMetrics(
         comparison: compareNormalizedGraphemes(reference: '가', input: '가'),
