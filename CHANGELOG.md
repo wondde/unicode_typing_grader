@@ -1,3 +1,7 @@
+## 0.1.2
+
+- Localize the Usage examples in the English, Korean, and Japanese READMEs.
+
 ## 0.1.1
 
 - Render README demo animations on pub.dev with absolute image URLs.

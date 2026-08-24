@@ -49,7 +49,7 @@ pub.dev에서 패키지를 추가합니다.
 
 ```yaml
 dependencies:
-  unicode_typing_grader: ^0.1.1
+  unicode_typing_grader: ^0.1.2
 ```
 
 ## 사용법
@@ -71,12 +71,12 @@ void main() {
 }
 ```
 
-정규화했을 때 같은 일본어 가나도 동일한 글자로 판단합니다.
+정규화했을 때 같은 한글도 동일한 글자로 판단합니다.
 
 ```dart
 final comparison = compareNormalizedGraphemes(
-  reference: 'が',
-  input: 'か\u3099',
+  reference: '가',
+  input: '\u1100\u1161',
 );
 
 print(comparison.editDistance); // 0

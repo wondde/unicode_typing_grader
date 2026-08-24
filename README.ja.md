@@ -51,7 +51,7 @@ pub.devからパッケージを追加します。
 
 ```yaml
 dependencies:
-  unicode_typing_grader: ^0.1.1
+  unicode_typing_grader: ^0.1.2
 ```
 
 ## 使い方
@@ -61,18 +61,15 @@ import 'package:unicode_typing_grader/unicode_typing_grader.dart';
 
 void main() {
   final result = gradeTyping(
-    reference: 'こんにちは。',
-    input: 'こんにちは',
-    policy: const TypingGradingPolicy(
-      whitespace: TypingWhitespacePolicy.exact,
-      punctuation: TypingPunctuationPolicy.ignoreTerminal,
-    ),
-    activeElapsed: const Duration(seconds: 20),
+    reference: '今日は天気がいいです。',
+    input: '今日は天気がいです。',
+    policy: TypingGradingPolicy.exact,
+    activeElapsed: const Duration(seconds: 30),
   );
 
-  print(result.accuracyPercent); // 100.0
-  print(result.charactersPerMinute); // 15.0
-  print(result.comparison.editDistance); // 0
+  print(result.accuracyPercent); // 90.9
+  print(result.charactersPerMinute); // 20.0
+  print(result.comparison.deletionCount); // 1
 }
 ```
 
