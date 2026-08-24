@@ -11,7 +11,7 @@ Japanese kana, Latin combining marks, and emoji joined with zero-width joiners.
 
 Originally extracted from **Hangurinyang**, a Korean-learning product by Moroo.
 
-![A Korean language-learning typing prompt being graded for accuracy, speed, and one grapheme-level substitution](doc/assets/typing-grader-demo.gif)
+![An English language-learning typing prompt being graded for accuracy, speed, and one grapheme-level deletion](doc/assets/typing-grader-demo-en.gif)
 
 ## When would I use this?
 

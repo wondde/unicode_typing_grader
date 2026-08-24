@@ -12,7 +12,7 @@ Dart를 위한 Unicode 기반 타이핑 채점기입니다. 기준 문장과 사
 Moroo의 한국어 학습 제품 **한그리냥(Hangurinyang)**에서 처음 개발된 엔진을
 독립적인 오픈소스 패키지로 분리했습니다.
 
-![한국어 학습 문장을 입력한 뒤 정확도, 속도, grapheme 단위 오타 하나를 채점하는 예제](doc/assets/typing-grader-demo.gif)
+![한국어 학습 문장을 입력한 뒤 정확도, 속도, grapheme 단위 오타 하나를 채점하는 예제](doc/assets/typing-grader-demo-ko.gif)
 
 ## 언제 사용할 수 있나요?
 
