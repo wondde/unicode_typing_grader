@@ -1,0 +1,8 @@
+# README media is served from GitHub so package consumers do not download it.
+doc/assets/
+
+# Local tool output is never part of a published library archive.
+.dart_tool/
+doc/api/
+example/web/main.dart.js*
+pubspec.lock
