@@ -50,7 +50,7 @@ Add the package from pub.dev:
 
 ```yaml
 dependencies:
-  unicode_typing_grader: ^0.1.1
+  unicode_typing_grader: ^0.1.2
 ```
 
 ## Usage
@@ -60,24 +60,24 @@ import 'package:unicode_typing_grader/unicode_typing_grader.dart';
 
 void main() {
   final result = gradeTyping(
-    reference: '안녕하세요',
-    input: '안녕하새요',
+    reference: 'Practice makes progress',
+    input: 'Practice makes progres',
     policy: TypingGradingPolicy.exact,
     activeElapsed: const Duration(seconds: 30),
   );
 
-  print(result.accuracyPercent); // 80.0
-  print(result.charactersPerMinute); // 10.0
-  print(result.comparison.substitutionCount); // 1
+  print(result.accuracyPercent); // 95.6
+  print(result.charactersPerMinute); // 44.0
+  print(result.comparison.deletionCount); // 1
 }
 ```
 
-The same comparison treats canonically equivalent Japanese kana as equal:
+The same comparison treats canonically equivalent Latin text as equal:
 
 ```dart
 final comparison = compareNormalizedGraphemes(
-  reference: 'が',
-  input: 'か\u3099',
+  reference: 'é',
+  input: 'e\u0301',
 );
 
 print(comparison.editDistance); // 0

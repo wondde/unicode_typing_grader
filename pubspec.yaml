@@ -1,6 +1,6 @@
 name: unicode_typing_grader
 description: Unicode-aware typing assessment with grapheme-level edits, configurable text policies, accuracy, and CPM metrics.
-version: 0.1.1
+version: 0.1.2
 repository: https://github.com/wondde/unicode_typing_grader
 issue_tracker: https://github.com/wondde/unicode_typing_grader/issues
 
