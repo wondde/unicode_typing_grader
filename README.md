@@ -2,6 +2,7 @@
 
 English | [한국어](https://github.com/wondde/unicode_typing_grader/blob/main/README.ko.md) | [日本語](https://github.com/wondde/unicode_typing_grader/blob/main/README.ja.md)
 
+[![pub package](https://img.shields.io/pub/v/unicode_typing_grader.svg)](https://pub.dev/packages/unicode_typing_grader)
 [![CI](https://github.com/wondde/unicode_typing_grader/actions/workflows/ci.yml/badge.svg)](https://github.com/wondde/unicode_typing_grader/actions/workflows/ci.yml)
 
 Unicode-aware typing assessment for Dart. Compare what a learner typed with a

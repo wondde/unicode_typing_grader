@@ -2,6 +2,7 @@
 
 [English](https://github.com/wondde/unicode_typing_grader/blob/main/README.md) | [한국어](https://github.com/wondde/unicode_typing_grader/blob/main/README.ko.md) | 日本語
 
+[![pub package](https://img.shields.io/pub/v/unicode_typing_grader.svg)](https://pub.dev/packages/unicode_typing_grader)
 [![CI](https://github.com/wondde/unicode_typing_grader/actions/workflows/ci.yml/badge.svg)](https://github.com/wondde/unicode_typing_grader/actions/workflows/ci.yml)
 
 Dart向けのUnicode対応タイピング評価ライブラリです。お手本と入力された文章を

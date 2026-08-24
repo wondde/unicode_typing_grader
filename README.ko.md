@@ -2,6 +2,7 @@
 
 [English](https://github.com/wondde/unicode_typing_grader/blob/main/README.md) | 한국어 | [日本語](https://github.com/wondde/unicode_typing_grader/blob/main/README.ja.md)
 
+[![pub package](https://img.shields.io/pub/v/unicode_typing_grader.svg)](https://pub.dev/packages/unicode_typing_grader)
 [![CI](https://github.com/wondde/unicode_typing_grader/actions/workflows/ci.yml/badge.svg)](https://github.com/wondde/unicode_typing_grader/actions/workflows/ci.yml)
 
 Dart를 위한 Unicode 기반 타이핑 채점기입니다. 기준 문장과 사용자가 입력한
